@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React from "react";
+import Register from "./auth/register";
+import Login from "./auth/login";
+import Home from "./auth/home";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Route, Routes,Navigate } from "react-router-dom";
+const App=() =>{
+  const user = localStorage.getItem("token");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div>
+    <Routes>
+      {user && <Route path="/getAll" exact element={<Home />} />}
+    <Route path="/register" exact element={<Register />} />
+			<Route path="/" exact element={<Login />} />
+      <Route path="/login" exact element={<Login />} />
+      <Route path="/getAll" element={<Navigate replace to="/login" />} />
+     </Routes>
+     <ToastContainer />
+     </div>
   );
 }
 
