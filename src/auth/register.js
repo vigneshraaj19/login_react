@@ -21,7 +21,8 @@ const Register=() =>{
         console.log(data);
         axios.post('http://localhost:5000/api/register',data)
         .then(res =>{
-            navigate("/login");       
+            navigate("/login");  
+            toast.success("Registered successfully");     
         })
         .catch(err =>{
             console.log(err.response.data.message);

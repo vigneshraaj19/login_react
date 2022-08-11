@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";
 import styles from "./styless.module.css";
+import { toast } from 'react-toastify';
 
 const Home=() =>{
     const handleLogout = () => {
@@ -20,6 +21,7 @@ const Home=() =>{
         .then(res =>{
             console.log(res.data);
 			setJson(res.data);
+            toast.success("Login successfully");   
         })
         .catch(err =>{
             
