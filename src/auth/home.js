@@ -14,14 +14,16 @@ const Home=() =>{
     useEffect(() =>{
         const validtoken = localStorage.getItem("token");
         console.log(validtoken);
-        axios.get('http://localhost:5000/api/getAll',{
+        const url1 = "https://loginapp10.herokuapp.com";
+			const url=`${url1}/api/getAll`
+        axios.get(url,{
            headers:{'auth': validtoken}})
 
 
         .then(res =>{
             console.log(res.data);
 			setJson(res.data);
-            toast.success("Login successfully");   
+               
         })
         .catch(err =>{
             

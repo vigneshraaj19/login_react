@@ -19,7 +19,9 @@ const Register=() =>{
     const  handleSubmit =(e) =>{
         e.preventDefault();
         console.log(data);
-        axios.post('http://localhost:5000/api/register',data)
+        const url1 = "https://loginapp10.herokuapp.com";
+		const url=`${url1}/api/register`
+        axios.post(url,data)
         .then(res =>{
             navigate("/login");  
             toast.success("Registered successfully");     

@@ -17,11 +17,14 @@ const Login=() =>{
     const  handleSubmit =(e) =>{
         e.preventDefault();
         console.log(data);
-        axios.post('http://localhost:5000/api/login',data)
+		const url1 = "https://loginapp10.herokuapp.com";
+		const url=`${url1}/api/login`
+        axios.post(url,data)
         .then(res =>{
 			console.log(res.data);
 			localStorage.setItem("token", res.data);
 			window.location = "/getAll";
+			toast.success("Login successfully");
             // navigate("/getAll");       
         })
         .catch(err =>{
@@ -54,7 +57,7 @@ const Login=() =>{
 							className={styles.input}
 						/>
 						<button type="submit" className={styles.green_btn}>
-							Sing In
+							Sign In
 						</button>
 					</form>
 				</div>
